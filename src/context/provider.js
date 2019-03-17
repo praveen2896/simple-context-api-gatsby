@@ -5,7 +5,7 @@ const defaultState = {
   incrementCount: () => {},
   decrementCount: () => {},
 }
-export const MyContext = React.createContext()
+export const MyContext = React.createContext(defaultState)
 
 export default class MyProvider extends Component {
   state = {
