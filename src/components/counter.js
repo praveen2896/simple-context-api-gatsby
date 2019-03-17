@@ -8,22 +8,10 @@ export default class Counter extends Component {
         <MyContext.Consumer>
           {context => (
             <React.Fragment>
-              counter value : {context.state.counter}
+              counter value : {context.counter}
               <br />
-              <button
-                onClick={() => {
-                  context.incrementCount()
-                }}
-              >
-                Increment
-              </button>
-              <button
-                onClick={() => {
-                  context.decrementCount()
-                }}
-              >
-                Decrement
-              </button>
+              <button onClick={context.incrementCount}>Increment</button>
+              <button onClick={context.decrementCount}>decrement</button>
             </React.Fragment>
           )}
         </MyContext.Consumer>

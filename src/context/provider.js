@@ -1,30 +1,39 @@
 import React, { Component } from "react"
 
-export const MyContext = React.createContext()
+const defaultState = {
+  counter: 0,
+  incrementCount: () => {},
+  decrementCount: () => {},
+}
+export const MyContext = React.createContext(defaultState)
 
 export default class MyProvider extends Component {
   state = {
     counter: 0,
   }
 
+  incrementCount = () => {
+    let counter = this.state.counter + 1
+    this.setState({ counter })
+  }
+
+  decrementCount = () => {
+    let counter = this.state.counter - 1
+    this.setState({ counter })
+  }
+
   render() {
+    const { children } = this.props
+    const { counter } = this.state
     return (
       <MyContext.Provider
         value={{
-          state: this.state,
-          incrementCount: () => {
-            this.setState({
-              counter: this.state.counter + 1,
-            })
-          },
-          decrementCount: () => {
-            this.setState({
-              counter: this.state.counter - 1,
-            })
-          },
+          counter,
+          incrementCount: this.incrementCount,
+          decrementCount: this.decrementCount,
         }}
       >
-        {this.props.children}
+        {children}
       </MyContext.Provider>
     )
   }
