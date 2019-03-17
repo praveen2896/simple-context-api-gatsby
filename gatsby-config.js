@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Simple React context-api Starter`,
     description: `simple starter with context-api`,
+    author: "Lucifier",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
